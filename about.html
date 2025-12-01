@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Bukidnon Mountains</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏔️ Bukidhanon</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>About Our Team</h1>
+            <p>Passionate developers and mountain enthusiasts dedicated to showcasing Bukidnon's natural wonders</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Meet the Developers</h2>
+            
+            <div class="about-content">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Our Mission</h3>
+                <p>We are a group of friends who loves to hikes each weekends on the mountains close to us, sharing experiences on different mountains here in Bukidnon.</p>
+                
+                <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Our Vision</h3>
+                <p>To become the premier online resource for mountain information in the Philippines, promoting eco-tourism and environmental awareness while supporting local communities in Bukidnon.</p>
+            </div>
+
+            <div class="mountain-grid">
+                <div class="developer-card">
+                    <img src="indian.jpg" alt="Lead Developer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">Indian Zje Epanis</h3>
+                    <p style="font-weight: bold; color: var(--secondary-color);">Leader Developer</p>
+                    <p>A Leader of this group, This person,s responsiblities is to execute the code and handel the group effectively. Mountain hiking enthusiast and nature photographer.</p>
+                </div>
+
+                <div class="developer-card">
+                    <img src="lawrence.jpg" alt="UI/UX Designer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">John Lawrence S. Dusaran</h3>
+                    <p style="font-weight: bold; color: var(--secondary-color);">CSS Design Developer</p>
+                    <>Creative CSS designer focused on creating intuitive and beautiful user interfaces. Love for outdoor adventures and Hiking for Causes.</p>
+                </div>
+
+                <div class="developer-card">
+                    <img src="albit.jpg" alt="Content Developer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">Carl Brian Albit</h3>
+                    <p style="font-weight: bold; color: var(--secondary-color);">Mountain Researcher</p>
+                    <p>Writer and researcher specializing in Philippine tourism and culture. Experienced mountaineer with extensive knowledge of Bukidnon's trails.</p>
+                </div>
+
+                <div class="developer-card">
+                    <img src="gaudeniel.jpg" alt="SEO Specialist" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color);">Gaudeniel Reyes</h3>
+                    <p style="font-weight: bold; color: var(--secondary-color);">Co-Developer</p>
+                    <p>A Helper and Co-Leader of the group. Nature lover and advocate for environmental protection in the Philippines.</p>
+                </div>
+            </div>
+
+            <div class="about-content" style="margin-top: 2rem;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Why Bukidnon?</h3>
+                <p>Bukidnon, known as the "Highland Paradise" of Mindanao, is home to some of the most spectacular mountains in the Philippines. Our team chose to focus on this region because of its rich biodiversity, cultural significance, and untapped tourism potential.</p>
+                
+                <p style="margin-top: 1rem;">Through this website, we aim to promote responsible tourism, support local communities, and preserve the natural beauty of these mountains for future generations.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bukidhanon. All rights reserved. | Discover the Beauty of Mindanao's Mountains</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️ Light';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙 Dark';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ Light';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const developerCards = document.querySelectorAll('.developer-card');
+            developerCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

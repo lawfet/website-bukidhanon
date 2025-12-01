@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukidnon Mountains - Discover the Giants of Mindanao</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏔️ Bukidhanon</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Discover the Majestic Mountains of Bukidnon</h1>
+            <p>Explore the breathtaking peaks of Mt. Capistrano, Mt. Magnaw, Mt. Dulang-Dulang, and Mt. Kitanglad</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Featured Mountains</h2>
+            <div class="mountain-grid">
+                <div class="mountain-card" onclick="window.location.href='blog-capistrano.html'">
+                    <img src="mt.capistrano.jpg" alt="Mt. Capistrano" class="mountain-image">
+                    <div class="mountain-content">
+                        <h3>Mt. Capistrano</h3>
+                        <p>Known as the "Little Boracay" of Bukidnon, this mountain offers stunning rock formations and panoramic views that will leave you breathless.</p>
+                        <a href="blog-capistrano.html" class="mountain-link">Explore More →</a>
+                    </div>
+                </div>
+
+                <div class="mountain-card" onclick="window.location.href='blog-magnaw.html'">
+                    <img src="mt.maagnaw.jpg" alt="Mt. Maagnaw" class="mountain-image">
+                    <div class="mountain-content">
+                        <h3>Mt. Maagnaw</h3>
+                        <p>A hidden gem in Bukidnon, Mt. Magnaw offers pristine forests, diverse wildlife, and challenging trails for adventure seekers.</p>
+                        <a href="blog-maagnaw.html" class="mountain-link">Explore More →</a>
+                    </div>
+                </div>
+
+                <div class="mountain-card" onclick="window.location.href='blog-dulangdulang.html'">
+                    <img src="mt.dulangdulang.jpg" alt="Mt. Dulang-Dulang" class="mountain-image">
+                    <div class="mountain-content">
+                        <h3>Mt. Dulang-Dulang</h3>
+                        <p>The second highest peak in the Philippines, standing at 2,938 meters above sea level, part of the Kitanglad Mountain Range.</p>
+                        <a href="blog-dulangdulang.html" class="mountain-link">Explore More →</a>
+                    </div>
+                </div>
+
+                <div class="mountain-card" onclick="window.location.href='blog-kitanglad.html'">
+                    <img src="mt.kitanglad.jpg" alt="Mt. Kitanglad" class="mountain-image">
+                    <div class="mountain-content">
+                        <h3>Mt. Kitanglad</h3>
+                        <p>A UNESCO World Heritage Site, home to the Philippine Eagle and diverse ecosystems, rising 2,899 meters above sea level.</p>
+                        <a href="blog-kitanglad.html" class="mountain-link">Explore More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bukidhanon. All rights reserved. | Discover the Beauty of Mindanao's Mountains</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️ Light';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙 Dark';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ Light';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mountainCards = document.querySelectorAll('.mountain-card');
+            mountainCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

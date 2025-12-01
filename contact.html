@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bukidnon Mountains</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏔️ Bukidhanon</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you! Share your mountain adventures or ask us anything about Bukidnon's peaks.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Contact Information</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+                <div class="about-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📍 Address</h3>
+                    <p>Bahian Boarding House<br>
+                    Malaybalay City, Bukidnon<br>
+                    Philippines 8700</p>
+                </div>
+                
+                <div class="about-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📞 Contact Info</h3>
+                    <p>Phone: +63 912 678 2007<br>
+                    Email: bukidhanon@gmail.com<br>
+                    Hours: Only Available on Weekends 9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="color: var(--primary-color); text-align: center; margin-bottom: 2rem;">Send us a Message</h3>
+                
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+63 XXX XXX XXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 5px; background: var(--background-color); color: var(--text-color);">
+                            <option value="">Select a subject</option>
+                            <option value="inquiry">General Inquiry</option>
+                            <option value="climbing">Mountain Climbing Info</option>
+                            <option value="tourism">Tourism Partnership</option>
+                            <option value="feedback">Website Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Tell us about your mountain adventures or ask us anything..."></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                </form>
+                
+                <div id="successMessage" style="display: none; background: #4CAF50; color: white; padding: 1rem; border-radius: 5px; margin-top: 1rem; text-align: center;">
+                    Thank you for your message! We'll get back to you within 24 hours.
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 3rem auto 0;">
+                <div class="about-content">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🌐 Follow Our Adventures</h3>
+                    <p>Stay connected with us through social media for the latest mountain updates, climbing tips, and stunning photography from Bukidnon's peaks!</p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+                        <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">📘 Facebook</a>
+                        <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">📷 Instagram</a>
+                        <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">🐦 Twitter</a>
+                        <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: bold;">📹 YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bukidhanon. All rights reserved. | Discover the Beauty of Mindanao's Mountains</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️ Light';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙 Dark';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️ Light';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Form submitted:', data);
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            event.target.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+            
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const formElements = document.querySelectorAll('.about-content, .contact-form');
+            formElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
